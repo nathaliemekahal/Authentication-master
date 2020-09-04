@@ -28,14 +28,18 @@ export class Login extends Component {
     const password = localStorage.getItem("password");
     console.log(email.slice(1, -1) + password.slice(1, -1));
     {
-      this.state.user.email === email.slice(1, -1) &&
-      this.state.user.password === password.slice(1, -1)
-        ? this.setState({ authenticated: true }, () => {
-            this.props.fn(this.state.authenticated);
-          })
-        : this.setState({ authenticated: false }, () => {
-            this.props.fn(this.state.authenticated);
-          });
+      if (email && password) {
+        this.state.user.email === email.slice(1, -1) &&
+        this.state.user.password === password.slice(1, -1)
+          ? this.setState({ authenticated: true }, () => {
+              this.props.fn(this.state.authenticated);
+            })
+          : this.setState({ authenticated: false }, () => {
+              this.props.fn(this.state.authenticated);
+            });
+      } else {
+        console.log("null");
+      }
     }
   };
   // onLogIn(e) {
