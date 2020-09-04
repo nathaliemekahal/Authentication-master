@@ -62,14 +62,13 @@ function App() {
             auth={Auth.auth}
             component={Main}
           />
-
           {authenticated && <Company />}
-          {!authenticated && <Login fn={handleLogin} />}
-          {/* <Route
+          {/* <Login fn={handleLogin} />} */}
+          <Route
             exact
             path="/Login"
             component={() => <Login fn={handleLogin} />}
-          /> */}
+          />
           <Route exact path="/signup" component={Signup} />
         </Switch>
       </Router>
